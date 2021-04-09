@@ -1,22 +1,18 @@
-// Thanks to Hugo Martinez for the types
-
-export enum AuctionState {
+export declare enum AuctionState {
     Waiting = 0,
     Listed = 1,
     Canceled = 2,
     Sold = 3,
     Invalid = 4
 }
-
-export enum SaleState {
+export declare enum SaleState {
     Waiting = 0,
     Listed = 1,
     Canceled = 2,
     Sold = 3,
     Invalid = 4
 }
-
-export enum OfferState {
+export declare enum OfferState {
     Pending = 0,
     Invalid = 1,
     Unknown = 2,
@@ -24,7 +20,6 @@ export enum OfferState {
     Declined = 4,
     Canceled = 5
 }
-
 export interface Sale {
     market_contract: string;
     asset_contract: string;
@@ -50,21 +45,18 @@ export interface Sale {
     created_at_time: string;
     created_at_txid: string;
 }
-
 export interface Marketplace {
     marketplace_name: string;
     creator: string;
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface Pair {
     listing_symbol: string;
     settlement_symbol: string;
     delphi_pair_name: string;
     invert_delphi_pair: boolean;
 }
-
 export interface Config {
     atomicassets_contract: string;
     atomicmarket_contract: string;
@@ -77,7 +69,6 @@ export interface Config {
     supported_tokens: Token[];
     supported_pairs: Pair[];
 }
-
 export interface Auction {
     market_contract: string;
     asset_contract: string;
@@ -102,44 +93,36 @@ export interface Auction {
     created_at_time: string;
     created_at_txid: string;
 }
-
-export enum SortOrder {
-    Asc = 'asc',
-    Desc = 'desc'
+export declare enum SortOrder {
+    Asc = "asc",
+    Desc = "desc"
 }
-
-export enum AuctionSort {
-    Created = 'created',
-    Ending = 'ending',
-    AuctionId = 'auction_id',
-    Price = 'price'
+export declare enum AuctionSort {
+    Created = "created",
+    Ending = "ending",
+    AuctionId = "auction_id",
+    Price = "price"
 }
-
-export enum SaleSort {
-    Created = 'created',
-    SaleId = 'sale_id',
-    Price = 'price'
+export declare enum SaleSort {
+    Created = "created",
+    SaleId = "sale_id",
+    Price = "price"
 }
-
-export enum AssetSort {
-    AssetId = 'asset_id',
-    Minted = 'minted',
-    Updated = 'updated'
+export declare enum AssetSort {
+    AssetId = "asset_id",
+    Minted = "minted",
+    Updated = "updated"
 }
-
-export enum TransferSort {
-    Created = 'created'
+export declare enum TransferSort {
+    Created = "created"
 }
-
-export enum OfferSort {
-    Created = 'created'
+export declare enum OfferSort {
+    Created = "created"
 }
-
 export interface AuctionParams extends Omit<SaleParams, 'state' | 'sort'> {
     state?: AuctionState[];
     sort?: AuctionSort;
 }
-
 export interface SaleParams extends SearchParams {
     state?: SaleState[];
     max_assets?: string;
@@ -162,7 +145,6 @@ export interface SaleParams extends SearchParams {
     match?: string;
     sort?: SaleSort;
 }
-
 export interface AssetParams extends SearchParams {
     owner?: string;
     collection_name?: string;
@@ -172,7 +154,6 @@ export interface AssetParams extends SearchParams {
     match?: string;
     sort?: AssetSort;
 }
-
 export interface OfferParams extends SearchParams {
     account?: string[];
     sender?: string[];
@@ -182,7 +163,6 @@ export interface OfferParams extends SearchParams {
     asset_id?: string[];
     sort?: OfferSort;
 }
-
 export interface TransferParams extends SearchParams {
     account?: string[];
     sender?: string[];
@@ -190,39 +170,32 @@ export interface TransferParams extends SearchParams {
     asset_id?: string[];
     sort?: TransferSort;
 }
-
 export interface SearchParams {
     order?: SortOrder;
 }
-
 export interface PriceParams {
     collection_name?: string;
     template_id?: string;
     schema_name?: string;
     symbol?: string;
 }
-
 export interface Price extends Token {
     price: string;
     block_time: string;
     block_num: string;
 }
-
 export interface Token {
     token_precision: string;
     token_contract: string;
     token_symbol: string;
 }
-
 export interface Price extends Token {
     amount: string;
 }
-
 export interface ListingAsset extends Asset {
     sales: Pick<Sale, 'market_contract' | 'sale_id'>[];
     auction: Pick<Auction, 'market_contract' | 'auction_id'>;
 }
-
 export interface AssetLog {
     log_id: string;
     name: string;
@@ -231,7 +204,6 @@ export interface AssetLog {
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface ListingTransfer {
     contract: string;
     sender_name: string;
@@ -241,7 +213,6 @@ export interface ListingTransfer {
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface ListingOffer {
     contract: string;
     offer_id: string;
@@ -258,7 +229,6 @@ export interface ListingOffer {
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface Asset {
     contract: string;
     asset_id: string;
@@ -280,7 +250,6 @@ export interface Asset {
     minted_at_block: string;
     minted_at_time: string;
 }
-
 export interface LightCollection {
     collection_name: string;
     name: string;
@@ -292,19 +261,16 @@ export interface LightCollection {
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface LightSchema {
     schema_name: string;
     format: SchemaFormat[];
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface SchemaFormat {
     name: string;
     type: string;
 }
-
 export interface LightTemplate {
     template_id: string;
     max_supply: string;
@@ -315,7 +281,6 @@ export interface LightTemplate {
     created_at_block: string;
     created_at_time: string;
 }
-
 export interface Bid {
     number: string;
     account: string;
