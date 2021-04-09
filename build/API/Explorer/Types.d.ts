@@ -194,7 +194,7 @@ export interface Price extends Token {
 }
 export interface ListingAsset extends Asset {
     sales: Pick<Sale, 'market_contract' | 'sale_id'>[];
-    auction: Pick<Auction, 'market_contract' | 'auction_id'>;
+    auctions: Pick<Auction, 'market_contract' | 'auction_id'>[];
 }
 export interface AssetLog {
     log_id: string;
@@ -239,6 +239,7 @@ export interface Asset {
     collection: LightCollection;
     schema: LightSchema;
     template: LightTemplate;
+    template_mint: string;
     backed_tokens: Price[];
     immutable_data: any;
     mutable_data: any;
